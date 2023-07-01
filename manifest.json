@@ -1,0 +1,37 @@
+{
+    "name": "Overleaf Github sync",
+    "version": "0.1.0",
+    "description": "Sync Overleaf resume(or any files) pdf with github on a click of a button",
+    "permissions": ["storage", "tabs", "activeTab"],
+    "host_permissions": ["https://*.overleaf.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*.overleaf.com/*"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "assets/bookmark.png",
+          "assets/play.png",
+          "assets/delete.png",
+          "assets/save.png"
+        ],
+        "matches": ["https://*.overleaf.com/*"]
+      }
+    ],
+    "action": {
+      "default_icon": {
+        "16": "assets/icon-16.png",
+        "24": "assets/icon-16.png",
+        "32": "assets/icon-16.png"
+      },
+      "default_title": "Github sync",
+      "default_popup": "popup.html"
+    },
+    "manifest_version": 3
+}
